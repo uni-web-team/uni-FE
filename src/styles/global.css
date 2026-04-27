@@ -1,0 +1,71 @@
+/* ── Global Reset & Variables ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --sage: #7BAE8B;
+  --sage-light: #A8C8B0;
+  --sage-dark: #5A8A6A;
+  --yellow: #E8C96A;
+  --yellow-light: #F5E4A0;
+  --mint: #9DCFBA;
+  --peach: #F5D5B0;
+
+  --bg-grad: linear-gradient(160deg, #C8DDB0 0%, #D8E8C0 25%, #E8EFC8 50%, #F0E8B8 75%, #F5E0A8 100%);
+
+  --card-bg: rgba(255, 255, 255, 0.65);
+  --card-border: rgba(120, 160, 100, 0.25);
+  --card-blur: blur(10px);
+
+  --text-main: #3A5240;
+  --text-sub: #6A8270;
+  --text-hint: #92A898;
+
+  --font-main: 'Gowun Dodum', sans-serif;
+  --font-bold: 'Nanum Gothic', sans-serif;
+
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --radius-pill: 9999px;
+
+  --shadow-card: 0 4px 20px rgba(80, 130, 90, 0.1);
+  --shadow-btn: 0 4px 14px rgba(123, 174, 139, 0.35);
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-main);
+  background: var(--bg-grad);
+  background-attachment: fixed;
+  color: var(--text-main);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  cursor: pointer;
+  font-family: var(--font-main);
+  border: none;
+  background: none;
+}
+
+input, textarea {
+  font-family: var(--font-main);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--sage-light); border-radius: 4px; }
