@@ -32,19 +32,23 @@ const GoogleIcon = () => (
 
 export default function LoginPage() {
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { login, register } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [emailTouched, setEmailTouched] = useState(false);
 
   const emailError = emailTouched && email.length > 0 && !isValidEmail(email);
 
-  function handleLogin() {
+  async function handleLogin() {
     if (!email.trim() || !password.trim()) { showToast('이메일과 비밀번호를 입력해주세요'); return; }
     if (!isValidEmail(email)) { setEmailTouched(true); return; }
-    login(email);
-    showToast('로그인 되었어요! 💚');
-    navigate('/');
+    try {
+      await login(email, password);
+      showToast('로그인 되었어요! 💚');
+      navigate('/');
+    } catch (e) {
+      showToast(e.message || '로그인에 실패했어요');
+    }
   }
 
   function handleSocial(provider) {

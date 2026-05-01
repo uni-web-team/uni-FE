@@ -24,7 +24,7 @@ const errMsg = (msg) => (
 
 export default function RegisterPage() {
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { register } = useAuth();
   const [form, setForm] = useState({ email: '', password: '', password2: '' });
   const [touched, setTouched] = useState({ email: false, password: false, password2: false });
 
@@ -35,15 +35,19 @@ export default function RegisterPage() {
   const pwError = touched.password && form.password.length > 0 && form.password.length < 8;
   const pw2Error = touched.password2 && form.password2.length > 0 && form.password !== form.password2;
 
-  function handleRegister() {
+  async function handleRegister() {
     setTouched({ email: true, password: true, password2: true });
     if (!form.email || !form.password) { showToast('이메일과 비밀번호를 입력해주세요'); return; }
     if (!isValidEmail(form.email)) return;
     if (form.password.length < 8) return;
     if (form.password !== form.password2) return;
-    login(form.email);
-    showToast('환영해요! uni 가족이 되었어요 💚');
-    navigate('/');
+    try {
+      await register(form.email, form.password);
+      showToast('환영해요! uni 가족이 되었어요 💚');
+      navigate('/');
+    } catch (e) {
+      showToast(e.message || '회원가입에 실패했어요');
+    }
   }
 
   return (
