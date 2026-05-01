@@ -11,6 +11,7 @@ import RegisterPage from './pages/RegisterPage';
 import CommunityPage from './pages/CommunityPage';
 import PostDetailPage from './pages/PostDetailPage';
 import WritePostPage from './pages/WritePostPage';
+import AdminPage from './pages/AdminPage';
 
 function AppInner() {
   const { posts, addPost, addComment, toggleLikePost, toggleLikeComment, getPost } = usePosts();
@@ -24,6 +25,7 @@ function AppInner() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/community" element={<CommunityPage posts={posts} />} />
         <Route path="/community/write" element={<WritePostPage addPost={addPost} />} />
+        <Route path="/admin" element={<AdminPage />} />
         <Route path="/community/:id" element={
           <PostDetailPage getPost={getPost} addComment={addComment} toggleLikePost={toggleLikePost} toggleLikeComment={toggleLikeComment} />
         } />
