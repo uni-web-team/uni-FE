@@ -8,10 +8,16 @@ export default function MailPage() {
 
   function handleSubmit() {
     if (!content.trim()) { showToast('고민을 입력해주세요 💚'); return; }
+    const body = content.trim();
     setSubmitted(true);
     setContent('');
     showToast('고민이 접수되었어요! 곧 따뜻한 답장이 올 거예요 📮');
     setTimeout(() => setSubmitted(false), 3000);
+    fetch('/api/mail', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ content: body }),
+    }).catch(() => {});
   }
 
   return (
