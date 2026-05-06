@@ -13,7 +13,7 @@ export default function MailPage() {
     setContent('');
     showToast('고민이 접수되었어요! 곧 따뜻한 답장이 올 거예요 📮');
     setTimeout(() => setSubmitted(false), 3000);
-    fetch('/api/mail', {
+    fetch(`${import.meta.env.VITE_API_URL}/api/mail`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ content: body }),

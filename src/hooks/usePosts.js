@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { ANIMAL_NICKS, fmtDate } from '../data/store';
 
-const API = '/api/posts';
+const API = `${import.meta.env.VITE_API_URL}/api/posts`;
 
 function authHeaders() {
   const token = localStorage.getItem('uni_token');

@@ -11,7 +11,7 @@ export default function AdminPage() {
     setLoading(true);
     setError('');
     try {
-      const res = await fetch('/api/mail', { headers: { 'X-Admin-Key': key.trim() } });
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/mail`, { headers: { 'X-Admin-Key': key.trim() } });
       if (res.status === 403) { setError('관리자 키가 올바르지 않아요'); setMails(null); return; }
       const data = await res.json();
       setMails(data);
