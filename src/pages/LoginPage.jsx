@@ -54,6 +54,8 @@ export default function LoginPage() {
   function handleSocial(provider) {
     if (provider === '카카오') {
       window.location.href = `${API}/kakao`;
+    } else if (provider === 'Google') {
+      window.location.href = `${API}/google`;
     }
   }
 
