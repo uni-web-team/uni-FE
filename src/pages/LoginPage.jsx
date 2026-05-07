@@ -52,9 +52,9 @@ export default function LoginPage() {
   }
 
   function handleSocial(provider) {
-    login(`${provider}@social.com`);
-    showToast(`${provider}로 로그인 되었어요! 💚`);
-    navigate('/');
+    if (provider === '카카오') {
+      window.location.href = `${API}/kakao`;
+    }
   }
 
   const card = {

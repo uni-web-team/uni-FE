@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 
 const AuthContext = createContext(null);
 
@@ -10,6 +10,18 @@ export function AuthProvider({ children }) {
     const email = localStorage.getItem('uni_email');
     return token && email ? { email } : null;
   });
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const token = params.get('token');
+    const email = params.get('email');
+    if (token && email) {
+      localStorage.setItem('uni_token', token);
+      localStorage.setItem('uni_email', email);
+      setUser({ email });
+      window.history.replaceState({}, '', window.location.pathname);
+    }
+  }, []);
 
   async function login(email, password) {
     const res = await fetch(`${API}/login`, {
