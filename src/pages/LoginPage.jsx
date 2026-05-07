@@ -6,6 +6,8 @@ import { showToast } from '../components/Toast';
 
 const isValidEmail = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
 
+const API = `${import.meta.env.VITE_API_URL}/api/auth`;
+
 const inputStyle = (hasError) => ({
   width: '100%', padding: '12px 18px',
   border: `1.5px solid ${hasError ? '#E05555' : 'rgba(120,160,100,0.3)'}`,
